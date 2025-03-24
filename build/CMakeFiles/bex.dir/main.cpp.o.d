@@ -1,5 +1,5 @@
-CMakeFiles/Bex.dir/main.cpp.o: /home/rjajko/Code/Bex/main.cpp \
- /usr/include/stdc-predef.h /usr/include/c++/14/iostream \
+CMakeFiles/bex.dir/main.cpp.o: /home/rjajko/Code/Bex/main.cpp \
+ /usr/include/stdc-predef.h /usr/include/c++/14/fstream \
  /usr/include/c++/14/bits/requires_hosted.h \
  /usr/include/c++/14/x86_64-redhat-linux/bits/c++config.h \
  /usr/include/bits/wordsize.h \
@@ -9,7 +9,7 @@ CMakeFiles/Bex.dir/main.cpp.o: /home/rjajko/Code/Bex/main.cpp \
  /usr/include/bits/long-double.h /usr/include/gnu/stubs.h \
  /usr/include/gnu/stubs-64.h \
  /usr/include/c++/14/x86_64-redhat-linux/bits/cpu_defines.h \
- /usr/include/c++/14/pstl/pstl_config.h /usr/include/c++/14/ostream \
+ /usr/include/c++/14/pstl/pstl_config.h /usr/include/c++/14/istream \
  /usr/include/c++/14/ios /usr/include/c++/14/iosfwd \
  /usr/include/c++/14/bits/stringfwd.h \
  /usr/include/c++/14/bits/memoryfwd.h /usr/include/c++/14/bits/postypes.h \
@@ -125,6 +125,9 @@ CMakeFiles/Bex.dir/main.cpp.o: /home/rjajko/Code/Bex/main.cpp \
  /usr/include/c++/14/bits/streambuf_iterator.h \
  /usr/include/c++/14/x86_64-redhat-linux/bits/ctype_inline.h \
  /usr/include/c++/14/bits/locale_facets.tcc \
- /usr/include/c++/14/bits/basic_ios.tcc \
- /usr/include/c++/14/bits/ostream.tcc /usr/include/c++/14/istream \
- /usr/include/c++/14/bits/istream.tcc
+ /usr/include/c++/14/bits/basic_ios.tcc /usr/include/c++/14/ostream \
+ /usr/include/c++/14/bits/ostream.tcc \
+ /usr/include/c++/14/bits/istream.tcc /usr/include/c++/14/bits/codecvt.h \
+ /usr/include/c++/14/x86_64-redhat-linux/bits/basic_file.h \
+ /usr/include/c++/14/x86_64-redhat-linux/bits/c++io.h \
+ /usr/include/c++/14/bits/fstream.tcc /usr/include/c++/14/iostream

@@ -63,7 +63,7 @@ CMAKE_BINARY_DIR = /home/rjajko/Code/Bex/build
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/Bex.dir/all
+all: CMakeFiles/bex.dir/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
@@ -71,34 +71,34 @@ preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: CMakeFiles/Bex.dir/clean
+clean: CMakeFiles/bex.dir/clean
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/Bex.dir
+# Target rules for target CMakeFiles/bex.dir
 
 # All Build rule for target.
-CMakeFiles/Bex.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Bex.dir/build.make CMakeFiles/Bex.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Bex.dir/build.make CMakeFiles/Bex.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/rjajko/Code/Bex/build/CMakeFiles --progress-num=1,2 "Built target Bex"
-.PHONY : CMakeFiles/Bex.dir/all
+CMakeFiles/bex.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/bex.dir/build.make CMakeFiles/bex.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/bex.dir/build.make CMakeFiles/bex.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/rjajko/Code/Bex/build/CMakeFiles --progress-num=1,2,3,4 "Built target bex"
+.PHONY : CMakeFiles/bex.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/Bex.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/rjajko/Code/Bex/build/CMakeFiles 2
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/Bex.dir/all
+CMakeFiles/bex.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/rjajko/Code/Bex/build/CMakeFiles 4
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/bex.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/rjajko/Code/Bex/build/CMakeFiles 0
-.PHONY : CMakeFiles/Bex.dir/rule
+.PHONY : CMakeFiles/bex.dir/rule
 
 # Convenience name for target.
-Bex: CMakeFiles/Bex.dir/rule
-.PHONY : Bex
+bex: CMakeFiles/bex.dir/rule
+.PHONY : bex
 
 # clean rule for target.
-CMakeFiles/Bex.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Bex.dir/build.make CMakeFiles/Bex.dir/clean
-.PHONY : CMakeFiles/Bex.dir/clean
+CMakeFiles/bex.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/bex.dir/build.make CMakeFiles/bex.dir/clean
+.PHONY : CMakeFiles/bex.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.
@@ -107,6 +107,7 @@ CMakeFiles/Bex.dir/clean:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
+	$(CMAKE_COMMAND) -P /home/rjajko/Code/Bex/build/CMakeFiles/VerifyGlobs.cmake
 	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

@@ -1,0 +1,3 @@
+(bit P 0)
+(bit Q 0)
+(print (and P Q))

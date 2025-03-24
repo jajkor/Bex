@@ -1,2 +1,2 @@
-# Empty dependencies file for Bex.
+# Empty dependencies file for bex.
 # This may be replaced when dependencies are built.

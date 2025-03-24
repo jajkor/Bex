@@ -113,45 +113,94 @@ preinstall/fast:
 
 # clear depends
 depend:
+	$(CMAKE_COMMAND) -P /home/rjajko/Code/Bex/build/CMakeFiles/VerifyGlobs.cmake
 	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named Bex
+# Target rules for targets named bex
 
 # Build rule for target.
-Bex: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Bex
-.PHONY : Bex
+bex: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 bex
+.PHONY : bex
 
 # fast build rule for target.
-Bex/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Bex.dir/build.make CMakeFiles/Bex.dir/build
-.PHONY : Bex/fast
+bex/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/bex.dir/build.make CMakeFiles/bex.dir/build
+.PHONY : bex/fast
 
-main.o: main.cpp.o
-.PHONY : main.o
+Bex.o: Bex.cpp.o
+.PHONY : Bex.o
 
 # target to build an object file
-main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Bex.dir/build.make CMakeFiles/Bex.dir/main.cpp.o
-.PHONY : main.cpp.o
+Bex.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/bex.dir/build.make CMakeFiles/bex.dir/Bex.cpp.o
+.PHONY : Bex.cpp.o
 
-main.i: main.cpp.i
-.PHONY : main.i
+Bex.i: Bex.cpp.i
+.PHONY : Bex.i
 
 # target to preprocess a source file
-main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Bex.dir/build.make CMakeFiles/Bex.dir/main.cpp.i
-.PHONY : main.cpp.i
+Bex.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/bex.dir/build.make CMakeFiles/bex.dir/Bex.cpp.i
+.PHONY : Bex.cpp.i
 
-main.s: main.cpp.s
-.PHONY : main.s
+Bex.s: Bex.cpp.s
+.PHONY : Bex.s
 
 # target to generate assembly for a file
-main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Bex.dir/build.make CMakeFiles/Bex.dir/main.cpp.s
-.PHONY : main.cpp.s
+Bex.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/bex.dir/build.make CMakeFiles/bex.dir/Bex.cpp.s
+.PHONY : Bex.cpp.s
+
+BexInterpreter.o: BexInterpreter.cpp.o
+.PHONY : BexInterpreter.o
+
+# target to build an object file
+BexInterpreter.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/bex.dir/build.make CMakeFiles/bex.dir/BexInterpreter.cpp.o
+.PHONY : BexInterpreter.cpp.o
+
+BexInterpreter.i: BexInterpreter.cpp.i
+.PHONY : BexInterpreter.i
+
+# target to preprocess a source file
+BexInterpreter.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/bex.dir/build.make CMakeFiles/bex.dir/BexInterpreter.cpp.i
+.PHONY : BexInterpreter.cpp.i
+
+BexInterpreter.s: BexInterpreter.cpp.s
+.PHONY : BexInterpreter.s
+
+# target to generate assembly for a file
+BexInterpreter.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/bex.dir/build.make CMakeFiles/bex.dir/BexInterpreter.cpp.s
+.PHONY : BexInterpreter.cpp.s
+
+Token.o: Token.cpp.o
+.PHONY : Token.o
+
+# target to build an object file
+Token.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/bex.dir/build.make CMakeFiles/bex.dir/Token.cpp.o
+.PHONY : Token.cpp.o
+
+Token.i: Token.cpp.i
+.PHONY : Token.i
+
+# target to preprocess a source file
+Token.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/bex.dir/build.make CMakeFiles/bex.dir/Token.cpp.i
+.PHONY : Token.cpp.i
+
+Token.s: Token.cpp.s
+.PHONY : Token.s
+
+# target to generate assembly for a file
+Token.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/bex.dir/build.make CMakeFiles/bex.dir/Token.cpp.s
+.PHONY : Token.cpp.s
 
 # Help Target
 help:
@@ -161,10 +210,16 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... Bex"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
+	@echo "... bex"
+	@echo "... Bex.o"
+	@echo "... Bex.i"
+	@echo "... Bex.s"
+	@echo "... BexInterpreter.o"
+	@echo "... BexInterpreter.i"
+	@echo "... BexInterpreter.s"
+	@echo "... Token.o"
+	@echo "... Token.i"
+	@echo "... Token.s"
 .PHONY : help
 
 
@@ -176,6 +231,7 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
+	$(CMAKE_COMMAND) -P /home/rjajko/Code/Bex/build/CMakeFiles/VerifyGlobs.cmake
 	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

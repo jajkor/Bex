@@ -1,5 +1,6 @@
 cmake_minimum_required(VERSION 3.10)
 
-project(Bex)
+project(bex)
 
-add_executable(Bex main.cpp)
+file(GLOB bex_SRC CONFIGURE_DEPENDS "*.h" "*.cpp")
+add_executable(bex ${bex_SRC})
