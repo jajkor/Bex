@@ -178,6 +178,30 @@ BexInterpreter.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/bex.dir/build.make CMakeFiles/bex.dir/BexInterpreter.cpp.s
 .PHONY : BexInterpreter.cpp.s
 
+Scanner.o: Scanner.cpp.o
+.PHONY : Scanner.o
+
+# target to build an object file
+Scanner.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/bex.dir/build.make CMakeFiles/bex.dir/Scanner.cpp.o
+.PHONY : Scanner.cpp.o
+
+Scanner.i: Scanner.cpp.i
+.PHONY : Scanner.i
+
+# target to preprocess a source file
+Scanner.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/bex.dir/build.make CMakeFiles/bex.dir/Scanner.cpp.i
+.PHONY : Scanner.cpp.i
+
+Scanner.s: Scanner.cpp.s
+.PHONY : Scanner.s
+
+# target to generate assembly for a file
+Scanner.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/bex.dir/build.make CMakeFiles/bex.dir/Scanner.cpp.s
+.PHONY : Scanner.cpp.s
+
 Token.o: Token.cpp.o
 .PHONY : Token.o
 
@@ -217,6 +241,9 @@ help:
 	@echo "... BexInterpreter.o"
 	@echo "... BexInterpreter.i"
 	@echo "... BexInterpreter.s"
+	@echo "... Scanner.o"
+	@echo "... Scanner.i"
+	@echo "... Scanner.s"
 	@echo "... Token.o"
 	@echo "... Token.i"
 	@echo "... Token.s"

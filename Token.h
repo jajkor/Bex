@@ -28,6 +28,8 @@ enum TokenType {
   CIRCUIT,
   TRUE,
   FALSE,
+
+  ENDOFFILE,
 };
 
 struct literal {
@@ -40,4 +42,8 @@ public:
   std::string lexeme;
   literal lit;
   int line;
+
+  std::string toString();
+  void updateLine(int l);
+  Token(TokenType type, std::string lexeme, literal lit, int line);
 };

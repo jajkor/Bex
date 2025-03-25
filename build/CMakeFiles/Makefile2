@@ -81,12 +81,12 @@ clean: CMakeFiles/bex.dir/clean
 CMakeFiles/bex.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/bex.dir/build.make CMakeFiles/bex.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/bex.dir/build.make CMakeFiles/bex.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/rjajko/Code/Bex/build/CMakeFiles --progress-num=1,2,3,4 "Built target bex"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/rjajko/Code/Bex/build/CMakeFiles --progress-num=1,2,3,4,5 "Built target bex"
 .PHONY : CMakeFiles/bex.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/bex.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/rjajko/Code/Bex/build/CMakeFiles 4
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/rjajko/Code/Bex/build/CMakeFiles 5
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/bex.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/rjajko/Code/Bex/build/CMakeFiles 0
 .PHONY : CMakeFiles/bex.dir/rule

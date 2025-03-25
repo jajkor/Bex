@@ -5,7 +5,7 @@ void BexInterpreter::runFile(std::string fileName) {
   std::ifstream sourceFile(fileName);
   if (sourceFile.is_open()) {
     while (getline(sourceFile, line)) {
-      std::cout << line << '\n';
+      run(line);
     }
     sourceFile.close();
   } else {
@@ -24,16 +24,10 @@ void BexInterpreter::runPrompt() {
   }
 }
 
-void BexInterpreter::error(int line, std::string message) {
-  report(line, "", message);
+void BexInterpreter::run(std::string source) {
+  Scanner s(source);
+  auto tokens = s.scanTokens();
 }
-
-void BexInterpreter::report(int line, std::string where, std::string message) {
-  std::cout << "[line " << line << "] Error" << where << ": " << message;
-  hadError = true;
-}
-
-void BexInterpreter::run(std::string source) {}
 
 BexInterpreter::BexInterpreter(int argc, char **argv) {
   hadError = false;

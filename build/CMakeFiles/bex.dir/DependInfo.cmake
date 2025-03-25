@@ -10,6 +10,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/rjajko/Code/Bex/Bex.cpp" "CMakeFiles/bex.dir/Bex.cpp.o" "gcc" "CMakeFiles/bex.dir/Bex.cpp.o.d"
   "/home/rjajko/Code/Bex/BexInterpreter.cpp" "CMakeFiles/bex.dir/BexInterpreter.cpp.o" "gcc" "CMakeFiles/bex.dir/BexInterpreter.cpp.o.d"
+  "/home/rjajko/Code/Bex/Scanner.cpp" "CMakeFiles/bex.dir/Scanner.cpp.o" "gcc" "CMakeFiles/bex.dir/Scanner.cpp.o.d"
   "/home/rjajko/Code/Bex/Token.cpp" "CMakeFiles/bex.dir/Token.cpp.o" "gcc" "CMakeFiles/bex.dir/Token.cpp.o.d"
   )
 

@@ -1,6 +1,6 @@
-CMakeFiles/bex.dir/main.cpp.o: /home/rjajko/Code/Bex/main.cpp \
- /usr/include/stdc-predef.h /usr/include/c++/14/fstream \
- /usr/include/c++/14/bits/requires_hosted.h \
+CMakeFiles/bex.dir/Scanner.cpp.o: /home/rjajko/Code/Bex/Scanner.cpp \
+ /usr/include/stdc-predef.h /home/rjajko/Code/Bex/Scanner.h \
+ /usr/include/c++/14/iostream /usr/include/c++/14/bits/requires_hosted.h \
  /usr/include/c++/14/x86_64-redhat-linux/bits/c++config.h \
  /usr/include/bits/wordsize.h \
  /usr/include/c++/14/x86_64-redhat-linux/bits/os_defines.h \
@@ -9,7 +9,7 @@ CMakeFiles/bex.dir/main.cpp.o: /home/rjajko/Code/Bex/main.cpp \
  /usr/include/bits/long-double.h /usr/include/gnu/stubs.h \
  /usr/include/gnu/stubs-64.h \
  /usr/include/c++/14/x86_64-redhat-linux/bits/cpu_defines.h \
- /usr/include/c++/14/pstl/pstl_config.h /usr/include/c++/14/istream \
+ /usr/include/c++/14/pstl/pstl_config.h /usr/include/c++/14/ostream \
  /usr/include/c++/14/ios /usr/include/c++/14/iosfwd \
  /usr/include/c++/14/bits/stringfwd.h \
  /usr/include/c++/14/bits/memoryfwd.h /usr/include/c++/14/bits/postypes.h \
@@ -125,9 +125,32 @@ CMakeFiles/bex.dir/main.cpp.o: /home/rjajko/Code/Bex/main.cpp \
  /usr/include/c++/14/bits/streambuf_iterator.h \
  /usr/include/c++/14/x86_64-redhat-linux/bits/ctype_inline.h \
  /usr/include/c++/14/bits/locale_facets.tcc \
- /usr/include/c++/14/bits/basic_ios.tcc /usr/include/c++/14/ostream \
- /usr/include/c++/14/bits/ostream.tcc \
- /usr/include/c++/14/bits/istream.tcc /usr/include/c++/14/bits/codecvt.h \
- /usr/include/c++/14/x86_64-redhat-linux/bits/basic_file.h \
- /usr/include/c++/14/x86_64-redhat-linux/bits/c++io.h \
- /usr/include/c++/14/bits/fstream.tcc /usr/include/c++/14/iostream
+ /usr/include/c++/14/bits/basic_ios.tcc \
+ /usr/include/c++/14/bits/ostream.tcc /usr/include/c++/14/istream \
+ /usr/include/c++/14/bits/istream.tcc /usr/include/c++/14/vector \
+ /usr/include/c++/14/bits/stl_uninitialized.h \
+ /usr/include/c++/14/bits/stl_vector.h \
+ /usr/include/c++/14/bits/stl_bvector.h \
+ /usr/include/c++/14/bits/vector.tcc /usr/include/c++/14/map \
+ /usr/include/c++/14/bits/stl_tree.h \
+ /usr/include/c++/14/ext/aligned_buffer.h \
+ /usr/include/c++/14/bits/node_handle.h \
+ /usr/include/c++/14/bits/stl_map.h \
+ /usr/include/c++/14/bits/stl_multimap.h \
+ /usr/include/c++/14/bits/erase_if.h /usr/include/c++/14/memory \
+ /usr/include/c++/14/bits/stl_tempbuf.h \
+ /usr/include/c++/14/bits/stl_raw_storage_iter.h \
+ /usr/include/c++/14/bits/align.h \
+ /usr/lib/gcc/x86_64-redhat-linux/14/include/stdint.h \
+ /usr/include/stdint.h /usr/include/bits/stdint-uintn.h \
+ /usr/include/bits/stdint-least.h /usr/include/c++/14/bits/unique_ptr.h \
+ /usr/include/c++/14/bits/shared_ptr.h \
+ /usr/include/c++/14/bits/shared_ptr_base.h \
+ /usr/include/c++/14/bits/allocated_ptr.h \
+ /usr/include/c++/14/ext/concurrence.h \
+ /usr/include/c++/14/bits/shared_ptr_atomic.h \
+ /usr/include/c++/14/bits/atomic_base.h \
+ /usr/include/c++/14/bits/atomic_lockfree_defines.h \
+ /usr/include/c++/14/backward/auto_ptr.h \
+ /usr/include/c++/14/pstl/glue_memory_defs.h \
+ /usr/include/c++/14/pstl/execution_defs.h /home/rjajko/Code/Bex/Token.h
