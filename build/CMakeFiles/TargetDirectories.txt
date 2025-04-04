@@ -1,3 +1,0 @@
-/home/rjajko/Code/Bex/build/CMakeFiles/bex.dir
-/home/rjajko/Code/Bex/build/CMakeFiles/edit_cache.dir
-/home/rjajko/Code/Bex/build/CMakeFiles/rebuild_cache.dir

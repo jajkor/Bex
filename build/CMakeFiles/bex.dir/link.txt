@@ -1,1 +1,0 @@
-/usr/bin/c++ CMakeFiles/bex.dir/Bex.cpp.o CMakeFiles/bex.dir/BexInterpreter.cpp.o CMakeFiles/bex.dir/Scanner.cpp.o CMakeFiles/bex.dir/Token.cpp.o -o bex
