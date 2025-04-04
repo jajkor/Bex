@@ -1,3 +1,8 @@
 (bit P 0)
 (bit Q 0)
 (print (and P Q))
+
+(circuit HALFADDER(A B)
+  (return SUM(xor A B))
+  (return CARRY(and A B)
+)
