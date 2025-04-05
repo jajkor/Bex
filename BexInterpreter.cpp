@@ -1,5 +1,29 @@
 #include "BexInterpreter.h"
 
+const std::string HELP_MESSAGE =
+    R"(Bex is a Boolean expression interpreter
+
+Usage: bex [options] [script]
+
+Options:
+  -d, --debug
+      Use debug output
+  -h, --help
+      Print help
+)";
+
+void printScannerResults(std::string line,
+                         std::vector<std::shared_ptr<Token>> tokens) {
+  std::cout << "LINE: " << "\n" << line << "\n";
+
+  std::cout << "KEYWORD:\t" << "LEXEME:" << "\n";
+
+  for (auto &token : tokens) {
+    std::cout << token.get()->type << "\t" << token.get()->lexeme << "\n";
+  }
+  std::cout << std::endl;
+}
+
 void BexInterpreter::runFile(std::string fileName) {
   std::string line;
   std::ifstream sourceFile(fileName);
@@ -9,7 +33,7 @@ void BexInterpreter::runFile(std::string fileName) {
     }
     sourceFile.close();
   } else {
-    std::cout << "Unable to open file";
+    std::cerr << "Error: Unable to open file";
   }
 }
 
@@ -24,31 +48,18 @@ void BexInterpreter::runPrompt() {
   }
 }
 
-void printScannerResults(std::string line,
-                         std::vector<std::shared_ptr<Token>> tokens) {
-  std::cout << "Scanning Line: " << line << std::endl;
-
-  std::cout << std::endl << "KEYWORD:\t" << "LEXEME:" << std::endl;
-
-  for (auto token : tokens) {
-    TokenType t = token.get()->type;
-    std::cout << t << ", \t\t" << token.get()->lexeme << std::endl;
-  }
-}
-
 void BexInterpreter::run(std::string source) {
   Scanner s(source);
   auto tokens = s.scanTokens();
-  if (opt.getDebug() == true)
+  if (BexInterpreter::opt.isDebugMode()) {
     printScannerResults(source, tokens);
+  }
 }
 
 BexInterpreter::BexInterpreter(int argc, char **argv) {
-  Options opt;
   std::regex debugPattern("^(-d|--debug)$");
   std::regex helpPattern("^(-h|--help)$");
   std::regex bxFilePattern(R"(^(.+)\.bx$)");
-  hadError = false;
 
   // Process all arguments
   for (int i = 1; i < argc; i++) {
@@ -56,21 +67,23 @@ BexInterpreter::BexInterpreter(int argc, char **argv) {
     std::smatch match;
 
     if (std::regex_match(arg, match, debugPattern)) {
-      opt.setDebug(true);
+      opt.setDebugMode(true);
     } else if (std::regex_match(arg, match, bxFilePattern)) {
       if (opt.hasFileName()) {
-        std::cout << "Error: Multiple .bx files specified\n";
-        std::cout << "Usage: bex [options] [script.bx]\n";
-        exit(1);
+        std::cerr << "Error: Multiple .bx files specified" << "\n";
+        std::cerr << "Usage: bex [options] [script.bx]" << "\n";
+        exit(EXIT_FAILURE);
       }
       opt.setFileName(arg);
+    } else if (std::regex_match(arg, match, helpPattern)) {
+      std::cout << HELP_MESSAGE << std::endl;
+      exit(EXIT_SUCCESS);
     } else {
-      std::cout << "Unknown argument: " << arg << "\n";
-      std::cout << "Usage: bex [options] [script.bx]\n";
-      exit(1);
+      std::cerr << "Unknown argument: " << arg << "\n";
+      std::cerr << "Usage: bex [options] [script.bx]" << "\n";
+      exit(EXIT_FAILURE);
     }
   }
-
   // Run file or prompt based on whether a file was specified
   if (opt.hasFileName()) {
     runFile(opt.getFileName());

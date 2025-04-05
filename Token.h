@@ -2,12 +2,10 @@
 
 #include <string>
 
-enum TokenType {
+enum class TokenType {
   // Single-character tokens.
   LEFT_PAREN,
   RIGHT_PAREN,
-
-  // One or two character tokens.
 
   // Literals.
   IDENTIFIER,
@@ -31,6 +29,8 @@ enum TokenType {
 
   ENDOFFILE,
 };
+
+std::ostream &operator<<(std::ostream &os, const TokenType &type);
 
 struct literal {
   bool boolean;

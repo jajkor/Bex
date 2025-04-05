@@ -1,5 +1,5 @@
-(bit P 0)
-(bit Q 0)
+(bit P True)
+(bit Q False)
 (print (and P Q))
 
 (circuit HALFADDER(A B)

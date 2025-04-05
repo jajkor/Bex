@@ -10,8 +10,8 @@ private:
 public:
   Options();
 
-  bool getDebug();
-  void setDebug(bool);
+  bool isDebugMode() const;
+  void setDebugMode(bool);
 
   void setFileName(const std::string &name);
   const std::string &getFileName();

@@ -2,8 +2,8 @@
 
 Options::Options() : debug(false) {}
 
-bool Options::getDebug() { return debug; }
-void Options::setDebug(bool val) { debug = val; }
+bool Options::isDebugMode() const { return debug; }
+void Options::setDebugMode(bool val) { debug = val; }
 
 void Options::setFileName(const std::string &name) { fileName = name; }
 const std::string &Options::getFileName() { return fileName; }

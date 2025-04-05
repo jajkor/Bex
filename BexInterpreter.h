@@ -10,7 +10,6 @@
 
 class BexInterpreter {
 private:
-  bool hadError;
   Options opt;
   void runFile(std::string fileName);
   void runPrompt();
