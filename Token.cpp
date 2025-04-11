@@ -1,6 +1,4 @@
-#include "Token.h"
-
-// Member initializer list
+#include "Token.h" // Member initializer list
 Token::Token(TokenType type, std::string lexeme, literal lit, int line)
     : type(type), lexeme(std::move(lexeme)), lit(std::move(lit)), line(line) {}
 
@@ -14,6 +12,8 @@ std::string tokenTypeToString(TokenType type) {
     return "IDENTIFIER";
   case TokenType::BOOL:
     return "BOOL";
+  case TokenType::NUMBER:
+    return "NUMBER";
   case TokenType::NOT:
     return "NOT";
   case TokenType::AND:

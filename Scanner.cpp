@@ -14,7 +14,7 @@ std::vector<std::shared_ptr<Token>> Scanner::scanTokens() {
   return std::move(this->tokens);
 }
 
-bool Scanner::isDigit(char c) { return '0' <= c && c <= '9'; }
+bool Scanner::isDigit(char c) { return '0' == c || c == '1'; }
 bool Scanner::isAlpha(char c) {
   return 'a' <= c && c <= 'z' || 'A' <= c && c <= 'Z' || c == '_';
 }
@@ -40,6 +40,21 @@ void Scanner::handleIdentifier() {
     this->tokens.push_back(
         std::make_shared<Token>(TokenType::IDENTIFIER, tmp, literal{}, line));
   }
+}
+
+void Scanner::handleNumber() {
+  while (isDigit(peek()) && !isAtEnd()) {
+    this->current++;
+  }
+
+  std::string bool_s =
+      this->source.substr(this->start, this->current - this->start);
+  int val = stoi(bool_s);
+  literal it;
+  it.boolean = val;
+
+  this->tokens.push_back(
+      std::make_shared<Token>(TokenType::BOOL, bool_s, it, line));
 }
 
 char Scanner::peek() {
@@ -81,7 +96,10 @@ void Scanner::scanToken() {
   case ' ':
     break;
   default:
-    if (isAlpha(c)) {
+    if (isDigit(c)) {
+      handleNumber();
+      break;
+    } else if (isAlpha(c)) {
       handleIdentifier();
       break;
     }

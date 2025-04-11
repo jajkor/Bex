@@ -10,6 +10,7 @@ enum class TokenType {
   // Literals.
   IDENTIFIER,
   BOOL,
+  NUMBER,
 
   // Keywords.
   NOT,

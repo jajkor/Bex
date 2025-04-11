@@ -1,0 +1,17 @@
+<program>        ::= <statement>*
+<statement>      ::= <definition> | <expression>
+<definition>     ::= <circuit-def> | <bit-def> | <bit-vector-def>
+<circuit-def>    ::= '(' 'circuit' IDENTIFIER <expression>+ ')'
+<bit-def>        ::= '(' 'bit' IDENTIFIER <expression> ')'
+<bit-vector-def> ::= '(' 'bit_vector' IDENTIFIER <expression>+ ')'
+<expression>     ::= <literal> | <variable-ref> | <operation> | '(' <expression> ')'
+<operation>      ::= <unary-op> | <binary-op> | <multi-op>
+<unary-op>       ::= '(' 'not' <expression> ')'
+<binary-op>      ::= '(' <binary-operator> <expression> <expression> ')'
+<multi-op>       ::= '(' <multi-operator> <expression>+ ')'
+<binary-operator> ::= 'xor' | 'xnor' | 'nand' | 'nor'
+<multi-operator>  ::= 'and' | 'or'
+<variable-ref>   ::= IDENTIFIER
+<literal>        ::= 'true' | 'false'
+<print-stmt>     ::= '(' 'print' <expression> ')'
+<return-stmt>    ::= '(' 'return' <expression> ')'
