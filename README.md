@@ -1,13 +1,13 @@
 # Bex - Boolean Expression Interpreter
 
-Bex is a simple interpreter for a language designed to work with boolean expressions and circuits.
+Bex is a simple interpreter for a language designed for modeling boolean expressions and digital logic circuits
 
 ## Building the Project
 
 1. Make sure you have CMake installed
 2. Create a build directory: `mkdir build && cd build`
 3. Run CMake: `cmake ..`
-4. Build the project: `make`
+4. Build the project: `cmake --build .`
 
 ## Running Bex
 
@@ -68,11 +68,10 @@ You can run Bex in two ways:
 (bit_vector vec1 1 0 1 0)
 (print vec1)
 
-;; Circuit definition (half adder)
-(circuit HALF_ADDER (a b)
-  (bit s (xor a b))
-  (bit c (and a b))
-  (return s)
+;; Circuit definition half adder
+(circuit HALF_ADDER(A B)
+  (return (xor A B))
+  (return (and A B))
 )
 
 ;; Circuit usage
