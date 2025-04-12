@@ -7,6 +7,7 @@
 #include <vector>
 
 #include "AstPrinter.h"
+#include "Evaluator.h" // Added Evaluator header
 #include "Options.h"
 #include "Parser.h"
 #include "Scanner.h"

@@ -1,4 +1,3 @@
-
 #pragma once
 
 #include "Expr.h"
@@ -52,11 +51,14 @@ public:
 class CircuitDefStmt : public Stmt {
 public:
   std::shared_ptr<Token> name;
+  std::vector<std::shared_ptr<Token>> parameters; // Added parameters vector
   std::vector<std::shared_ptr<Expr>> body;
 
-  CircuitDefStmt(std::shared_ptr<Token> name,
-                 std::vector<std::shared_ptr<Expr>> body)
-      : name(name), body(body) {}
+  CircuitDefStmt(
+      std::shared_ptr<Token> name,
+      std::vector<std::shared_ptr<Token>> parameters, // Added parameters
+      std::vector<std::shared_ptr<Expr>> body)
+      : name(name), parameters(parameters), body(body) {}
 
   void *accept(StmtVisitor *visitor) override {
     return visitor->visitCircuitDefStmt(this);

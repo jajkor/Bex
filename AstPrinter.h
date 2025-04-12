@@ -44,6 +44,19 @@ public:
     return new std::string(expr->name->lexeme);
   }
 
+  void *visitCallExpr(CallExpr *expr) override {
+    std::stringstream ss;
+    ss << "(" << expr->callee->lexeme;
+
+    for (const auto &arg : expr->arguments) {
+      std::string argStr = print(arg);
+      ss << " " << argStr;
+    }
+
+    ss << ")";
+    return new std::string(ss.str());
+  }
+
   void *visitUnaryExpr(UnaryExpr *expr) override {
     std::string right = print(expr->right);
     std::stringstream ss;
@@ -88,6 +101,15 @@ public:
   void *visitCircuitDefStmt(CircuitDefStmt *stmt) override {
     std::stringstream ss;
     ss << "(circuit " << stmt->name->lexeme;
+
+    // Add parameters
+    ss << " (";
+    for (size_t i = 0; i < stmt->parameters.size(); i++) {
+      if (i > 0)
+        ss << " ";
+      ss << stmt->parameters[i]->lexeme;
+    }
+    ss << ")";
 
     for (const auto &expr : stmt->body) {
       std::string e = print(expr);

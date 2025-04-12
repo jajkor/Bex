@@ -1,4 +1,3 @@
-
 #include "Parser.h"
 #include <iostream>
 
@@ -233,8 +232,9 @@ std::shared_ptr<Stmt> Parser::circuitDef() {
               << name->lexeme << "'" << std::endl;
   }
 
-  return std::make_shared<CircuitDefStmt>(name, body);
+  return std::make_shared<CircuitDefStmt>(name, parameters, body);
 }
+
 std::shared_ptr<Stmt> Parser::bitDef() {
   // 'bit' token already consumed
   std::shared_ptr<Token> name =
@@ -418,8 +418,8 @@ std::shared_ptr<Expr> Parser::expression() {
 
       consume(TokenType::RIGHT_PAREN, "Expected ')' after function arguments.");
 
-      // Create a variable reference for the function
-      return std::make_shared<VariableExpr>(funcName);
+      // Create a call expression
+      return std::make_shared<CallExpr>(funcName, args);
     }
 
     // It's a grouped expression
@@ -483,9 +483,8 @@ std::shared_ptr<Expr> Parser::variableRef() {
 
     consume(TokenType::RIGHT_PAREN, "Expected ')' after function arguments.");
 
-    // For a more complete implementation, we would create a proper
-    // FunctionCallExpr but for now, return a simple variable reference
-    return std::make_shared<VariableExpr>(name);
+    // Create a call expression
+    return std::make_shared<CallExpr>(name, arguments);
   }
 
   return std::make_shared<VariableExpr>(name);

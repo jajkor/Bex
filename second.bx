@@ -21,10 +21,8 @@
 )
 
 (circuit FULL_ADDER(a b cin)
-  (bit sum (xor (xor a b) cin))
-  (bit carry (or (and a b) (and (xor a b) cin)))
-  (return sum)
-  (return carry)
+  (return (xor (xor a b) cin))
+  (return (or (and a b) (and (xor a b) cin)))
 )
 
 (print (AND_GATE A B))

@@ -1,4 +1,3 @@
-
 #pragma once
 
 #include "Token.h"
@@ -15,6 +14,7 @@ class UnaryExpr;
 class BinaryExpr;
 class MultiExpr;
 class GroupingExpr;
+class CallExpr; // Added CallExpr
 
 // Visitor pattern for expressions
 class ExprVisitor {
@@ -27,6 +27,7 @@ public:
   virtual void *visitBinaryExpr(BinaryExpr *expr) = 0;
   virtual void *visitMultiExpr(MultiExpr *expr) = 0;
   virtual void *visitGroupingExpr(GroupingExpr *expr) = 0;
+  virtual void *visitCallExpr(CallExpr *expr) = 0; // Added CallExpr visitor
 };
 
 // Base expression class
@@ -57,6 +58,21 @@ public:
 
   void *accept(ExprVisitor *visitor) override {
     return visitor->visitVariableExpr(this);
+  }
+};
+
+// Call expression (circuit call)
+class CallExpr : public Expr {
+public:
+  std::shared_ptr<Token> callee;
+  std::vector<std::shared_ptr<Expr>> arguments;
+
+  CallExpr(std::shared_ptr<Token> callee,
+           std::vector<std::shared_ptr<Expr>> arguments)
+      : callee(callee), arguments(arguments) {}
+
+  void *accept(ExprVisitor *visitor) override {
+    return visitor->visitCallExpr(this);
   }
 };
 

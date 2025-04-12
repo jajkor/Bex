@@ -1,4 +1,5 @@
 #include "BexInterpreter.h"
+#include "Evaluator.h"    // Include our new Evaluator
 #include "ScannerDebug.h" // Include the header, not the cpp file
 
 const std::string HELP_MESSAGE =
@@ -84,10 +85,11 @@ void BexInterpreter::run(std::string source) {
     printParseResults(statements);
   }
 
-  // In a complete implementation, you would:
-  // 1. Evaluate the parsed statements
-  // 2. Handle any runtime errors
-  // 3. Generate output or side effects
+  // Evaluate parsed statements if there are any
+  if (!statements.empty()) {
+    Evaluator evaluator;
+    evaluator.evaluate(statements);
+  }
 }
 
 BexInterpreter::BexInterpreter(int argc, char **argv) {
