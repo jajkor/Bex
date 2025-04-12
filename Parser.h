@@ -18,7 +18,7 @@ public:
 
 class Parser {
 private:
-  std::vector<std::shared_ptr<Token>> tokens;
+  std::vector<std::shared_ptr<Token>> tok;
   int current = 0;
 
   // Utility methods
@@ -55,6 +55,6 @@ private:
   std::shared_ptr<Expr> primary();
 
 public:
-  Parser(const std::vector<std::shared_ptr<Token>> &tokens);
+  Parser(const std::vector<std::shared_ptr<Token>> &tok);
   std::vector<std::shared_ptr<Stmt>> parse();
 };

@@ -66,7 +66,7 @@ void BexInterpreter::run(std::string source) {
 }
 
 BexInterpreter::BexInterpreter(int argc, char **argv) {
-  std::regex verbosePattern("^(-d|--verbose)$");
+  std::regex verbosePattern("^(-v|--verbose)$");
   std::regex helpPattern("^(-h|--help)$");
   std::regex bxFilePattern(R"(^(.+)\.bx$)");
 

@@ -10,5 +10,5 @@
 
 // Function declarations
 std::string debugTokenTypeToString(TokenType type);
-void printTokenStream(const std::vector<std::shared_ptr<Token>> &tokens);
+void printTokenStream(const std::vector<std::shared_ptr<Token>> &tok);
 void printParseResults(const std::vector<std::shared_ptr<Stmt>> &statements);

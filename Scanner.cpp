@@ -115,6 +115,9 @@ void Scanner::scanToken() {
   case '\t':
     // Ignore whitespace
     break;
+  case ';':
+    // Ignore comments ;
+    break;
   case '\n':
     line++; // Increment line number
     break;

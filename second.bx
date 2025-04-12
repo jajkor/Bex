@@ -1,3 +1,4 @@
+; comment
 (bit A true)
 (bit B false)
 (bit C 1)

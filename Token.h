@@ -4,14 +4,13 @@
 #include <vector>
 
 enum class TokenType {
-  // Single-character tokens.
+  // Single-character tok.
   LEFT_PAREN,
   RIGHT_PAREN,
 
   // Literals.
   IDENTIFIER,
   BOOL,
-  NUMBER,
 
   // Keywords.
   NOT,

@@ -1,5 +1,5 @@
 (bit P True)
-(bit Q 1)
+(bit Q 0)
 
 (bit_vector N 0b1010)
 (bit_vector M 0b0101)
@@ -9,7 +9,7 @@
   (return (and A B))
 )
 
-(print (and P Q))
+(print (or P Q))
 (print (HALF_ADDER P Q))
 
 (print N)
