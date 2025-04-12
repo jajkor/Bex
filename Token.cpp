@@ -1,4 +1,5 @@
-#include "Token.h" // Member initializer list
+#include "Token.h"
+
 Token::Token(TokenType type, std::string lexeme, literal lit, int line)
     : type(type), lexeme(std::move(lexeme)), lit(std::move(lit)), line(line) {}
 

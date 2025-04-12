@@ -1,10 +1,12 @@
 #pragma once
 
+#include <iostream>
+#include <memory>
+#include <vector>
+
 #include "Environment.h"
 #include "Expr.h"
 #include "Stmt.h"
-#include <memory>
-#include <vector>
 
 class Evaluator : public ExprVisitor, public StmtVisitor {
 private:

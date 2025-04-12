@@ -1,9 +1,10 @@
 #pragma once
 
-#include "Token.h"
 #include <memory>
 #include <string>
 #include <vector>
+
+#include "Token.h"
 
 // Forward declarations
 class Stmt;

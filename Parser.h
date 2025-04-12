@@ -1,12 +1,14 @@
 #pragma once
 
-#include "Expr.h"
-#include "Stmt.h"
-#include "Token.h"
+#include <iostream>
 #include <memory>
 #include <stdexcept>
 #include <string>
 #include <vector>
+
+#include "Expr.h"
+#include "Stmt.h"
+#include "Token.h"
 
 class ParseError : public std::runtime_error {
 public:

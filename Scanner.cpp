@@ -177,10 +177,6 @@ Scanner::Scanner(std::string source)
   lit.bits = {false};
   this->keyword_table.insert(
       std::make_pair("0", Token(TokenType::BOOL, "0", lit, 0)));
-
-  lit.boolean = false;
-  lit.is_bitvector = true;
-  lit.bits = {false};
   this->keyword_table.insert(
       std::make_pair("false", Token(TokenType::FALSE, "false", lit, 0)));
   this->keyword_table.insert(
@@ -198,10 +194,6 @@ Scanner::Scanner(std::string source)
   lit.bits = {true};
   this->keyword_table.insert(
       std::make_pair("1", Token(TokenType::BOOL, "1", lit, 0)));
-
-  lit.boolean = true;
-  lit.is_bitvector = true;
-  lit.bits = {true};
   this->keyword_table.insert(
       std::make_pair("true", Token(TokenType::TRUE, "true", lit, 0)));
   this->keyword_table.insert(

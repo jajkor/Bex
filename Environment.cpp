@@ -1,5 +1,4 @@
 #include "Environment.h"
-#include <iostream>
 
 void Environment::define(const std::string &name, const literal &value) {
   values[name] = value;

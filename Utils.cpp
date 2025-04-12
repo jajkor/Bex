@@ -1,5 +1,5 @@
 
-#include "ScannerDebug.h"
+#include "Utils.h"
 #include <iostream>
 
 // A helper function to convert TokenType to string for debugging
@@ -52,12 +52,24 @@ std::string debugTokenTypeToString(TokenType type) {
 
 // Function to print the token stream after scanning
 void printTokenStream(const std::vector<std::shared_ptr<Token>> &tokens) {
-  std::cout << "=== TOKEN STREAM ===" << std::endl;
+  std::cout << "=== TOKEN STREAM ===" << '\n';
   for (size_t i = 0; i < tokens.size(); i++) {
     auto token = tokens[i];
     std::cout << i << ": [" << token->line << "] "
               << debugTokenTypeToString(token->type) << " '" << token->lexeme
-              << "'" << std::endl;
+              << "'" << '\n';
   }
-  std::cout << "===================" << std::endl;
+  std::cout << "====================" << std::endl;
+}
+
+void printParseResults(const std::vector<std::shared_ptr<Stmt>> &statements) {
+  std::cout << "=== PARSE STREAM ===" << '\n'
+            << statements.size() << " statements" << std::endl;
+
+  AstPrinter printer;
+  for (int i = 0; i < statements.size(); i++) {
+    std::string result = printer.print(statements[i]);
+    std::cout << i + 1 << ": " << result << '\n';
+  }
+  std::cout << "====================" << std::endl;
 }

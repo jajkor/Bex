@@ -1,10 +1,11 @@
 #pragma once
 
-#include "Expr.h"
-#include "Token.h"
 #include <memory>
 #include <string>
 #include <vector>
+
+#include "Expr.h"
+#include "Token.h"
 
 // Forward declarations
 class StmtVisitor;

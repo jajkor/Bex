@@ -1,5 +1,4 @@
 #include "Parser.h"
-#include <iostream>
 
 Parser::Parser(const std::vector<std::shared_ptr<Token>> &tokens)
     : tokens(tokens), current(0) {}

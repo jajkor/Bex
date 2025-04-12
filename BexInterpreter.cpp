@@ -1,6 +1,6 @@
 #include "BexInterpreter.h"
-#include "Evaluator.h"    // Include our new Evaluator
-#include "ScannerDebug.h" // Include the header, not the cpp file
+#include "Evaluator.h" // Include our new Evaluator
+#include "Utils.h"     // Include the header, not the cpp file
 
 const std::string HELP_MESSAGE =
     R"(Bex is a Boolean expression interpreter
@@ -8,35 +8,11 @@ const std::string HELP_MESSAGE =
 Usage: bex [options] [script]
 
 Options:
-  -d, --debug
-      Use debug output
+  -d, --verbose
+      Print verbose output
   -h, --help
       Print help
 )";
-
-void printScannerResults(std::string line,
-                         std::vector<std::shared_ptr<Token>> tokens) {
-  std::cout << "LINE: " << "\n" << line << "\n";
-
-  std::cout << "KEYWORD:\t" << "LEXEME:" << "\n";
-
-  for (auto &token : tokens) {
-    std::cout << token.get()->type << "\t" << token.get()->lexeme << "\n";
-  }
-  std::cout << std::endl;
-}
-
-void BexInterpreter::printParseResults(
-    const std::vector<std::shared_ptr<Stmt>> &statements) {
-  std::cout << "PARSE RESULTS: " << statements.size() << " statements"
-            << std::endl;
-
-  AstPrinter printer;
-  for (int i = 0; i < statements.size(); i++) {
-    std::string result = printer.print(statements[i]);
-    std::cout << i + 1 << ": " << result << std::endl;
-  }
-}
 
 void BexInterpreter::runFile(std::string fileName) {
   std::string line;
@@ -70,11 +46,8 @@ void BexInterpreter::run(std::string source) {
   Scanner scanner(source);
   auto tokens = scanner.scanTokens();
 
-  // Always print the token stream for debugging
-  printTokenStream(tokens);
-
   if (BexInterpreter::opt.isDebugMode()) {
-    printScannerResults(source, tokens);
+    printTokenStream(tokens);
   }
 
   // Parse tokens
@@ -93,7 +66,7 @@ void BexInterpreter::run(std::string source) {
 }
 
 BexInterpreter::BexInterpreter(int argc, char **argv) {
-  std::regex debugPattern("^(-d|--debug)$");
+  std::regex verbosePattern("^(-d|--verbose)$");
   std::regex helpPattern("^(-h|--help)$");
   std::regex bxFilePattern(R"(^(.+)\.bx$)");
 
@@ -102,7 +75,7 @@ BexInterpreter::BexInterpreter(int argc, char **argv) {
     std::string arg(argv[i]);
     std::smatch match;
 
-    if (std::regex_match(arg, match, debugPattern)) {
+    if (std::regex_match(arg, match, verbosePattern)) {
       opt.setDebugMode(true);
     } else if (std::regex_match(arg, match, bxFilePattern)) {
       if (opt.hasFileName()) {

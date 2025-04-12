@@ -1,13 +1,16 @@
 (bit P True)
 (bit Q 1)
-(bit N 1)
-(print (and P Q))
 
-(bit_vector 0b0101)
+(bit_vector N 0b1010)
+(bit_vector M 0b0101)
 
 (circuit HALF_ADDER(A B)
   (return (xor A B))
   (return (and A B))
 )
 
+(print (and P Q))
 (print (HALF_ADDER P Q))
+
+(print N)
+(print M)

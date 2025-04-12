@@ -18,7 +18,7 @@ You can run Bex in two ways:
 
 ## Command-line Options
 
-- `-d, --debug`: Enable debug output
+- `-v, --verbose`: Enable verbose output
 - `-h, --help`: Print help information
 
 ## Language Features

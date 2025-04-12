@@ -1,5 +1,4 @@
 #include "Evaluator.h"
-#include <iostream>
 
 Evaluator::Evaluator() : environment(std::make_shared<Environment>()) {}
 
