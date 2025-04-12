@@ -77,10 +77,11 @@ You can run Bex in two ways:
 
 ;; Circuit usage
 (print (HALF_ADDER true false))
-
+```
 
 ### Language Grammar
 
+```
 <program>        ::= <statement>*
 <statement>      ::= <definition> | <expression>
 <definition>     ::= <circuit-def> | <bit-def> | <bit-vector-def>
@@ -100,3 +101,4 @@ You can run Bex in two ways:
 <literal>        ::= 'true' | 'false'
 <print-stmt>     ::= '(' 'print' <expression> ')'
 <return-stmt>    ::= '(' 'return' <expression> ')'
+```
