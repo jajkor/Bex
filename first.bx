@@ -3,9 +3,11 @@
 (bit N 1)
 (print (and P Q))
 
-(bit_vector 0101)
+(bit_vector 0b0101)
 
-(circuit HALFADDER(A B)
-  (return SUM(xor A B))
-  (return CARRY(and A B)
+(circuit HALF_ADDER(A B)
+  (return (xor A B))
+  (return (and A B))
 )
+
+(print (HALF_ADDER A B))

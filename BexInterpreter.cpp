@@ -1,4 +1,5 @@
 #include "BexInterpreter.h"
+#include "ScannerDebug.h" // Include the header, not the cpp file
 
 const std::string HELP_MESSAGE =
     R"(Bex is a Boolean expression interpreter
@@ -24,13 +25,27 @@ void printScannerResults(std::string line,
   std::cout << std::endl;
 }
 
+void BexInterpreter::printParseResults(
+    const std::vector<std::shared_ptr<Stmt>> &statements) {
+  std::cout << "PARSE RESULTS: " << statements.size() << " statements"
+            << std::endl;
+
+  AstPrinter printer;
+  for (int i = 0; i < statements.size(); i++) {
+    std::string result = printer.print(statements[i]);
+    std::cout << i + 1 << ": " << result << std::endl;
+  }
+}
+
 void BexInterpreter::runFile(std::string fileName) {
   std::string line;
   std::ifstream sourceFile(fileName);
   if (sourceFile.is_open()) {
+    std::string source;
     while (getline(sourceFile, line)) {
-      run(line);
+      source += line + "\n";
     }
+    run(source);
     sourceFile.close();
   } else {
     std::cerr << "Error: Unable to open file";
@@ -42,18 +57,37 @@ void BexInterpreter::runPrompt() {
   std::cout << ">> ";
 
   while (std::getline(std::cin, line)) {
-    std::cout << line << std::endl;
+    if (line.empty())
+      break;
     run(line);
     std::cout << ">> ";
   }
 }
 
 void BexInterpreter::run(std::string source) {
-  Scanner s(source);
-  auto tokens = s.scanTokens();
+  // Scan tokens
+  Scanner scanner(source);
+  auto tokens = scanner.scanTokens();
+
+  // Always print the token stream for debugging
+  printTokenStream(tokens);
+
   if (BexInterpreter::opt.isDebugMode()) {
     printScannerResults(source, tokens);
   }
+
+  // Parse tokens
+  Parser parser(tokens);
+  auto statements = parser.parse();
+
+  if (BexInterpreter::opt.isDebugMode() && !statements.empty()) {
+    printParseResults(statements);
+  }
+
+  // In a complete implementation, you would:
+  // 1. Evaluate the parsed statements
+  // 2. Handle any runtime errors
+  // 3. Generate output or side effects
 }
 
 BexInterpreter::BexInterpreter(int argc, char **argv) {

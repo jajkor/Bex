@@ -1,5 +1,6 @@
 #pragma once
 
+#include <bitset>
 #include <iostream>
 #include <map>
 #include <memory>
@@ -23,7 +24,7 @@ private:
   bool isAlpha(char c);
   bool isAldigit(char c);
   void handleIdentifier();
-  void handleNumber();
+  void handleBitLiteral();
   void scanToken();
   char advance();
   void addToken(TokenType type);

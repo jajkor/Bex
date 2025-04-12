@@ -1,0 +1,35 @@
+(bit A true)
+(bit B false)
+(bit C 1)
+
+(bit_vector my_vector 0b1010)
+
+(circuit AND_GATE(x y)
+  (return (and x y))
+)
+
+(circuit OR_GATE(x y)
+  (return (or x y))
+)
+
+(circuit XOR_GATE(x y)
+  (return (xor x y))
+)
+
+(circuit NOT_GATE(x)
+  (return (not x))
+)
+
+(circuit FULL_ADDER(a b cin)
+  (bit sum (xor (xor a b) cin))
+  (bit carry (or (and a b) (and (xor a b) cin)))
+  (return sum)
+  (return carry)
+)
+
+(print (AND_GATE A B))
+(print (OR_GATE A C))
+(print (XOR_GATE B C))
+(print (NOT_GATE A))
+
+(print (FULL_ADDER A B C))

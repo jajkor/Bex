@@ -1,5 +1,4 @@
 #include "Scanner.h"
-#include <vector>
 
 bool Scanner::isAtEnd() { return this->current >= this->end; }
 
@@ -33,28 +32,46 @@ void Scanner::handleIdentifier() {
   if (iter != this->keyword_table.end()) {
     iter->second.updateLine(this->line);
 
-    // this->tokens.push_back(new Token(iter->second));
-    this->tokens.push_back(
-        std::make_shared<Token>(TokenType::IDENTIFIER, tmp, literal{}, line));
+    this->tokens.push_back(std::make_shared<Token>(iter->second.type, tmp,
+                                                   iter->second.lit, line));
   } else {
     this->tokens.push_back(
         std::make_shared<Token>(TokenType::IDENTIFIER, tmp, literal{}, line));
   }
 }
 
-void Scanner::handleNumber() {
-  while (isDigit(peek()) && !isAtEnd()) {
-    this->current++;
+void Scanner::handleBitLiteral() {
+  // Skip the '0b' prefix if present
+  if (peek() == '0' && peekNext() == 'b') {
+    advance(); // Skip '0'
+    advance(); // Skip 'b'
   }
 
-  std::string bool_s =
-      this->source.substr(this->start, this->current - this->start);
-  int val = stoi(bool_s);
-  literal it;
-  it.boolean = val;
+  std::vector<bool> bits;
+  // Read all 0s and 1s
+  while (!isAtEnd() && (peek() == '0' || peek() == '1')) {
+    char bit = advance();
+    bits.push_back(bit == '1');
+  }
 
-  this->tokens.push_back(
-      std::make_shared<Token>(TokenType::BOOL, bool_s, it, line));
+  // Create the token
+  literal lit;
+  lit.is_bitvector = true;
+  lit.bits = bits;
+
+  // If it's a single bit, we can also set the boolean value
+  if (bits.size() == 1) {
+    lit.boolean = bits[0];
+    this->tokens.push_back(std::make_shared<Token>(
+        TokenType::BOOL,
+        this->source.substr(this->start, this->current - this->start), lit,
+        line));
+  } else {
+    this->tokens.push_back(std::make_shared<Token>(
+        TokenType::BIT_VECTOR,
+        this->source.substr(this->start, this->current - this->start), lit,
+        line));
+  }
 }
 
 char Scanner::peek() {
@@ -94,16 +111,43 @@ void Scanner::scanToken() {
         std::make_shared<Token>(TokenType::RIGHT_PAREN, ")", literal{}, line));
     break;
   case ' ':
+  case '\r':
+  case '\t':
+    // Ignore whitespace
     break;
+  case '\n':
+    line++; // Increment line number
+    break;
+  case '0':
+    if (peek() == 'b') {
+      current--; // Move back to include the '0' in the token
+      handleBitLiteral();
+    } else {
+      literal lit;
+      lit.boolean = false;
+      lit.is_bitvector = true;
+      lit.bits = {false};
+      this->tokens.push_back(
+          std::make_shared<Token>(TokenType::BOOL, "0", lit, line));
+    }
+    break;
+  case '1': {
+    // Just a single '1'
+    literal lit;
+    lit.boolean = true;
+    lit.is_bitvector = true;
+    lit.bits = {true};
+    this->tokens.push_back(
+        std::make_shared<Token>(TokenType::BOOL, "1", lit, line));
+    break;
+  }
   default:
-    if (isDigit(c)) {
-      handleNumber();
-      break;
-    } else if (isAlpha(c)) {
+    if (isAlpha(c)) {
       handleIdentifier();
       break;
     }
-    std::cout << "Error: " << c << std::endl;
+    std::cout << "Error: Unexpected character '" << c << "' at line " << line
+              << std::endl;
     break;
   }
 }
@@ -124,11 +168,24 @@ Scanner::Scanner(std::string source)
       std::make_pair("nor", Token(TokenType::NOR, "nor", literal{}, 0)));
   this->keyword_table.insert(
       std::make_pair("xor", Token(TokenType::XOR, "xor", literal{}, 0)));
+  this->keyword_table.insert(
+      std::make_pair("xnor", Token(TokenType::XNOR, "xnor", literal{}, 0)));
 
   literal lit{};
   lit.boolean = false;
+  lit.is_bitvector = true;
+  lit.bits = {false};
   this->keyword_table.insert(
-      std::make_pair("false", Token(TokenType::FALSE, "false", literal{}, 0)));
+      std::make_pair("0", Token(TokenType::BOOL, "0", lit, 0)));
+
+  lit.boolean = false;
+  lit.is_bitvector = true;
+  lit.bits = {false};
+  this->keyword_table.insert(
+      std::make_pair("false", Token(TokenType::FALSE, "false", lit, 0)));
+  this->keyword_table.insert(
+      std::make_pair("False", Token(TokenType::FALSE, "False", lit, 0)));
+
   this->keyword_table.insert(
       std::make_pair("print", Token(TokenType::PRINT, "print", literal{}, 0)));
   this->keyword_table.insert(std::make_pair(
@@ -137,8 +194,19 @@ Scanner::Scanner(std::string source)
       "circuit", Token(TokenType::CIRCUIT, "circuit", literal{}, 0)));
 
   lit.boolean = true;
+  lit.is_bitvector = true;
+  lit.bits = {true};
   this->keyword_table.insert(
-      std::make_pair("true", Token(TokenType::TRUE, "true", literal{}, 0)));
+      std::make_pair("1", Token(TokenType::BOOL, "1", lit, 0)));
+
+  lit.boolean = true;
+  lit.is_bitvector = true;
+  lit.bits = {true};
+  this->keyword_table.insert(
+      std::make_pair("true", Token(TokenType::TRUE, "true", lit, 0)));
+  this->keyword_table.insert(
+      std::make_pair("True", Token(TokenType::TRUE, "True", lit, 0)));
+
   this->keyword_table.insert(
       std::make_pair("bit", Token(TokenType::BIT, "bit", literal{}, 0)));
   this->keyword_table.insert(std::make_pair(
