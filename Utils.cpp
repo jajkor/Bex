@@ -13,8 +13,6 @@ std::string debugTokenTypeToString(TokenType type) {
     return "IDENTIFIER";
   case TokenType::BOOL:
     return "BOOL";
-  case TokenType::NUMBER:
-    return "NUMBER";
   case TokenType::NOT:
     return "NOT";
   case TokenType::AND:
